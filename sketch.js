@@ -85,13 +85,7 @@ function draw() {
   if (gameState=="end"){
     text("GAMEOVER",200,200)
   }
-  if (frameCount%60===0){
-    particles.push(new Particle(random(30,600),5,5));
-  }
-  for (var i =0 ;i < particles.length;i++){
-    particles[i].display()
   
-   }
    for (var k =0 ;k < plinkos.length;k++){
     plinkos[k].display()
    
@@ -137,21 +131,36 @@ function draw() {
   dv6.display()
   dv7.display()
   b.display()
-  if (particles1!==null){
+  if (particles1!=null){
     particles1.display();
 
-    if (particles1.body.position.y>760){
+    if (particles1.body.position.y>600){
 
-      if (particles1.body.position.x<300){
+      if (particles1.body.position.x<100){
 
        score=score+500;
        particles1=null;
        if (count>=5) gameState="end"
       }
+      else if (particles1.body.position.x < 400 && particles1.body.position.x > 101 ) 
+              {
+                    score = score + 100;
+                    particles1=null;
+                    if ( count>= 5) gameState ="end";
+
+              }
+              else if (particles1.body.position.x < 700 && particle.body.position.x >401 )
+              {
+                    score = score + 200;
+                    particles1=null;
+                    if ( count>= 5)  gameState ="end";
+
+              }      
+              
 
     }
   }
-  mousePressed()
+
 }
 function mousePressed(){
   if (gameState!=="end"){
